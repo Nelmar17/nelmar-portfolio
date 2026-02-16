@@ -7,7 +7,6 @@ import { FaHtml5, FaCss3, FaReact, FaFigma, FaCameraRetro } from 'react-icons/fa
 import { SiJavascript, SiAdobephotoshop } from 'react-icons/si'
 import Particles from './Particles'
 
-const GRID_SIZE = 15
 const ORBIT_BASE_RADIUS = 160
 const ICON_SIZE = 64 // px
 
@@ -69,7 +68,7 @@ function CyclingTitle({ titles }: { titles: string[] }) {
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const [mouse, setMouse] = useState({ x: 9999, y: 9999 })
-  const [introDone, setIntroDone] = useState(false)
+ 
 
   const timeRef = useRef(0)
   const rafRef = useRef<number | null>(null)
@@ -109,10 +108,6 @@ export default function Hero() {
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current) }
   }, [])
 
-  useEffect(() => {
-    const t = setTimeout(() => setIntroDone(true), 1400)
-    return () => clearTimeout(t)
-  }, [])
 
   return (
     <section id="hero-section" ref={containerRef} className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-gray-90 to-white dark:from-gray-950 dark:to-primary">
@@ -148,7 +143,8 @@ export default function Hero() {
           <motion.p className="mt-4 text-base md:text-lg max-w-xl mx-auto md:mx-0 text-gray-700 dark:text-gray-300" initial={{ y: 10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, ease: 'easeOut', delay: 0.32 }}>I craft modern, high-performance sites with eye-catching interactions and polished visual identity.</motion.p>
           <motion.div className="mt-8 flex justify-center md:justify-start gap-4" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.6 }}>
             <Link href="/projects" className="px-6 py-3 rounded-lg bg-gradient-to-r from-cyan-400 to-violet-500 text-white font-medium shadow-md hover:scale-[1.02] transition-transform">View Work</Link>
-            <Link href="/contact" className="px-6 py-3 rounded-lg bg-white/3 text-gray-700 dark:text-gray-200 backdrop-blur-sm border border-primary transition">Let's build something</Link>
+            <Link href="/contact" className="px-6 py-3 rounded-lg bg-white/3 text-gray-700 dark:text-gray-200 backdrop-blur-sm border border-primary transition">Let&apos;s build something
+</Link>
 
           </motion.div>
 
