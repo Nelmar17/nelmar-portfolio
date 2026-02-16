@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+
+@theme {
+  --color-primary: #007AFF;
+  --color-secondary: #6B7280;
+  --color-dark: #1F2937;
+  --color-light: #F9FAFB;
+  --color-text: #000000;
+  --color-bg: #ffffff;
+
+  --font-sans: 'Inter', sans-serif;
+
+  --animation-fade-in: fadeIn 0.5s ease-in-out;
+  --animation-slide-up: slideUp 0.5s ease-in-out;
+}
+
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+a {
+  transition: all 0.2s ease;
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary/90;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-secondary/90;
+  }
+  
+  .section-title {
+    @apply text-3xl font-bold mb-8 text-center;
+  }
+} 
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Gradient animation */
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 5s ease infinite;
+}
+
+/* Slow bounce for icons */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
+/* === CUSTOM PEN TOOL CURSOR === */
+
+/* html, body {
+  cursor: url("/cursor-pen.png") 4 28, auto;
+} */
+
+
+/* HERO TEXT STROKE + HOVER FILL */
+.text-stroke-hover {
+  -webkit-text-stroke: 1px #007AFF; /* Outline color */
+  color: transparent;               /* Transparent fill */
+  font-weight: 800;
+  transition: color 0.3s, -webkit-text-stroke-color 0.3s;
+}
+
+.text-stroke-hover:hover {
+  color: #007AFF;                   /* Fill on hover */
+  -webkit-text-stroke-color: transparent;
+}
+
+.dark .text-stroke-hover {
+  -webkit-text-stroke: 1px #007AFF; 
+  color: transparent;
+}
+
+.dark .text-stroke-hover:hover {
+  color: #007AFF;
+  -webkit-text-stroke-color: transparent;
+}
+
+/* HERO SVG STROKE ANIMATION */
+@keyframes drawStroke {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.dash-anim {
+  animation: dashmove 10s linear infinite;
+}
+
+@keyframes dashmove {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -200;
+  }
+}
+
+
+
+/* 🔵 Custom shape for angled box (40% slice) */
+/* .clip-angled {
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+} */
+
+/* .clip-angled {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+} */
+/* Adjustable height + angled both sides */
+.clip-angled-both {
+  clip-path: polygon(
+    10% 0%,   /* LEFT TOP CUT */
+    100% 0%,  /* RIGHT TOP */
+    90% 100%, /* RIGHT BOTTOM CUT */
+    0% 100%   /* LEFT BOTTOM */
+  );
+}
+
+:root {
+  --logo-bg-light: #0a6cff;
+  --logo-text-light: #ffffff;
+
+  --logo-bg-dark: #3787ffff;
+  --logo-text-dark: #000000ff;
+}
+
+.clip-angled {
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+}
+
